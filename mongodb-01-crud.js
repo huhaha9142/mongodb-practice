@@ -117,12 +117,13 @@ function testInsertOneDoc(doc) {
 // testInsertOneDoc({name: "임꺽정", job: "도적"});
 
 function testInsertManyDocs(docs) {
+
     client.connect()
     .then(client => {
         const db = client.db("mydb");
         if (Array.isArray(docs)) {
             //  여러 개의 문서
-            db.collection('friend').insertMany(docs)
+            db.collection('friends').insertMany(docs)
             .then(result => {
                 console.log(result.insertedCount, "개 삽입");
                 client.close();
@@ -130,6 +131,9 @@ function testInsertManyDocs(docs) {
             .catch(reason => {
                 console.error(reason);
             })
+        } else {
+            //  1개 문서
+            testInsertOneDoc(docs);
         }
     })
 
@@ -140,3 +144,8 @@ testInsertManyDocs(
      {name: '도우너', gender: '남성', species: '외계인', age: 15},
      {name: '또치', gender: '여성', species: '조류', age: 15},
      {name: '영희', gender: '여성', species: '인간', age: 15}]);
+
+//  함수 내보내기: 다른 모듈에서 사용할 수 있게
+// exports.testInsertOneDoc = testInsertOneDoc;
+// exports.testInsertManyDocs = testInsertManyDocs;
+// exports.testDeleteAll = testDeleteAll;
