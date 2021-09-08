@@ -1,0 +1,29 @@
+{
+  "name": "mongodb-practice",
+  "version": "1.0.0",
+  "main": "general_example.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^4.1.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huhaha9142/mongodb-practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huhaha9142/mongodb-practice/issues"
+  },
+  "homepage": "https://github.com/huhaha9142/mongodb-practice#readme",
+  "keywords": [],
+  "description": ""
+}

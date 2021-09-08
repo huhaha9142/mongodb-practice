@@ -6,7 +6,7 @@ process.on("tick", () => {
     count ++;
     console.log(count, "초가 흘렀습니다.");
 
-    if (count > 10) {
+    if (count >= 10) {
         ticker.emit("stop");
     }
 });
