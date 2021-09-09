@@ -47,6 +47,21 @@ module.exports = (app) => {
                 .send("ERROR: 친구를 추가하지 못했습니다.");
         })
     })
+    //  사용자 정보 확인
+    router.get("/friends/show/:id", (req, resp) => {
+        console.log("id:", req.params.id);
+
+        let db = app.get("db");
+        db.collection('friends')
+        .findOne({_id: ObjectId(req.params.id)})
+        .then(result => {
+            resp.render("friend_show", { friend: result });
+        })
+        .catch(reason => {
+            resp.status(500)
+                .send("<p>사용자 정보가 없습니다</p>");
+        })
+    });
 
     //  삭제
     router.get("/friends/delete/:id", (req, resp) => {

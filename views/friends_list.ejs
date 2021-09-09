@@ -43,7 +43,7 @@
           <% friends.map((friend, index) => { %> 
           <tr>
             <th scope="row"><%= index +1 %></th>
-            <td><a href="#"><%= friend.name %></a></td>
+            <td><a href="/web/friends/show/<%= friend._id %>"<%= friend.name %></a></td>
             <td><%= friend.species %></td>
             <td><%= friend.age %></td>
             <td><a href="#" class="btn btn-primary btn-sm">수정</a> 
