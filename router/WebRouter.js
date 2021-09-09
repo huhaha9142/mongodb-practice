@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { ObjectId } = require("mongodb");    //  ObjectId를 처리하기 위해
 
 module.exports = (app) => {
     router.get(["/friends/list", "/friends"], (req, resp) => {
@@ -44,6 +45,22 @@ module.exports = (app) => {
             console.error(reason);
             resp.status(500)    //  Internal Server Error
                 .send("ERROR: 친구를 추가하지 못했습니다.");
+        })
+    })
+
+    //  삭제
+    router.get("/friends/delete/:id", (req, resp) => {
+        console.lot("삭제할 ID:", req.params.id);
+        let db = app.get("db");
+        db.collection("friends")
+        .deleteOne({_id: ObjectId(req.params.id)})
+        .then(result => {
+            //  리스트 페이지로
+            resp.redirect("/web/friend/list");
+        })
+        .catch(reason => {
+            resp.status(500)
+                .send("<p>삭제할 수 없습니다.</p>");
         })
     })
     return router;
