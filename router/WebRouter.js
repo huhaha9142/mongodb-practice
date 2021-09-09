@@ -47,8 +47,8 @@ module.exports = (app) => {
                 .send("ERROR: 친구를 추가하지 못했습니다.");
         })
     })
-    //  사용자 정보 확인
-    router.get("/friends/show/:id", (req, resp) => {
+      //  사용자 정보 확인
+      router.get("/friends/show/:id", (req, resp) => {
         console.log("id:", req.params.id);
 
         let db = app.get("db");
@@ -65,13 +65,13 @@ module.exports = (app) => {
 
     //  삭제
     router.get("/friends/delete/:id", (req, resp) => {
-        console.lot("삭제할 ID:", req.params.id);
+        console.log("삭제할 ID:", req.params.id);
         let db = app.get("db");
         db.collection("friends")
         .deleteOne({_id: ObjectId(req.params.id)})
         .then(result => {
             //  리스트 페이지로
-            resp.redirect("/web/friend/list");
+            resp.redirect("/web/friends/list");
         })
         .catch(reason => {
             resp.status(500)

@@ -104,7 +104,7 @@ app.get("/render", (req, resp) => {
 const webRouter = require("./router/WebRouter")(app);
 app.use("/web", webRouter);
 const apiRouter = require("./router/APIRouter")(app);
-app.user("/api", apiRouter);
+app.use("/api", apiRouter);
 
 function startServer() {
     //  database 연결 정보
